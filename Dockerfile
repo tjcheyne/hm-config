@@ -50,7 +50,8 @@ RUN \
     pip install --no-cache-dir poetry==1.5.1 && \
     poetry install --no-cache --no-root && \
     poetry build && \
-    pip install --no-cache-dir dist/hm_config-1.0.tar.gz
+    pip install --no-cache-dir dist/hm_config-1.0.tar.gz && \
+    pip install lgpio
 
 # No need to cleanup the builder
 
@@ -67,7 +68,8 @@ RUN \
         libdbus-1-3 \
         network-manager \
         python3-gi \
-        python3-venv
+        python3-venv \
+        libgpiod2
 
 # Nebra uses /opt by convention
 WORKDIR /opt/
@@ -78,6 +80,9 @@ ENV PYTHONPATH="/opt:$PYTHONPATH"
 # Copy venv from builder and update PATH to activate it
 COPY --from=builder /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
+
+# set lgpio env var
+ENV GPIOZERO_PIN_FACTORY=lgpio
 
 # hadolint ignore=DL3008, DL4006
 RUN export DISTRO=bullseye-stable && \
