@@ -51,7 +51,7 @@ RUN \
     poetry install --no-cache --no-root && \
     poetry build && \
     pip install --no-cache-dir dist/hm_config-1.0.tar.gz && \
-    pip install lgpio
+    pip install --no-cache-dir lgpio
 
 # No need to cleanup the builder
 
