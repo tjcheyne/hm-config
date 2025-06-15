@@ -13,7 +13,7 @@ jobs:
           # - board: "generic-amd64"      # TODO NEBD-106 Enable it after fixing build issues
           #   arch: "amd64"
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     permissions:
       packages: write
       contents: read
@@ -65,7 +65,7 @@ jobs:
 
   multiarch:
     needs: main
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     permissions:
       packages: write
       contents: read
