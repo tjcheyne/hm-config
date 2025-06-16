@@ -25,6 +25,9 @@ COPY *.sh ./
 # This will be the path that venv uses for installation below
 ENV PATH="/opt/venv/bin:$PATH"
 
+#install wheel nefore lgpio
+RUN pip install wheel
+
 # Install python3-minimal, pip3, wget, venv.
 # Then set venv environment copied from builder.
 # Finally, use pip to install dependencies.
