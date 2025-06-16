@@ -25,9 +25,6 @@ COPY *.sh ./
 # This will be the path that venv uses for installation below
 ENV PATH="/opt/venv/bin:$PATH"
 
-#install wheel nefore lgpio
-RUN pip install wheel
-
 # Install python3-minimal, pip3, wget, venv.
 # Then set venv environment copied from builder.
 # Finally, use pip to install dependencies.
@@ -51,6 +48,8 @@ RUN \
     # Because the PATH is already updated above, this command creates a new venv AND activates it
     python3 -m venv /opt/venv && \
     # Given venv is active, this `pip` refers to the python3 variant
+    #install wheel nefore lgpio
+    pip install wheel && \
     pip install --no-cache-dir poetry==1.5.1 && \
     poetry install --no-cache --no-root && \
     poetry build && \
