@@ -43,7 +43,8 @@ RUN \
             pkg-config \
             python3-dev \
             libdbus-1-dev \
-            gir1.2-gtk-3.0 && \
+            gir1.2-gtk-3.0 \
+            swig && \
     # Because the PATH is already updated above, this command creates a new venv AND activates it
     python3 -m venv /opt/venv && \
     # Given venv is active, this `pip` refers to the python3 variant
