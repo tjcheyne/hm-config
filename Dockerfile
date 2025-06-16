@@ -27,7 +27,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 # Install python3-minimal, pip3, wget, venv.
 # Then set venv environment copied from builder.
-# Finally, use pip to install dependencies.
+# Finally, use pip to install dependencies
 # hadolint ignore=DL3013
 RUN \
     install_packages \
