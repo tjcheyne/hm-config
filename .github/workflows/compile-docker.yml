@@ -8,7 +8,7 @@ jobs:
       matrix:
         include:
           - board: "raspberrypi3-64"
-            arch: "arm64/v8"
+            arch: "arm64"
             version: "v8"
             arch_full: "linux/arm64/v8"
           - board: "generic-amd64"      # TODO NEBD-106 Enable it after fixing build issues
