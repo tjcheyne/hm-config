@@ -8,11 +8,11 @@ jobs:
       matrix:
         include:
           - board: "raspberrypi3-64"
-            arch: "arm64"
+            arch: "arm64v8"
             version: "v8"
-            arch_full: "linux/arm64/v8"
-          - board: "generic-amd64"      # TODO NEBD-106 Enable it after fixing build issues
-            arch: "amd64"
+            platform: "linux/arm64/v8"
+          #- board: "generic-amd64"      # TODO NEBD-106 Enable it after fixing build issues
+          #  arch: "amd64"
 
     runs-on: ubuntu-22.04
     permissions:
@@ -54,6 +54,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v3
         with:
+          platforms: ${{ matrix.platform }}
           build-args: BUILD_BOARD=${{ matrix.board }}
           push: true
           labels: ${{ steps.meta.outputs.labels }}
