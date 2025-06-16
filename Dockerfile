@@ -30,6 +30,7 @@ RUN install_packages \
         git \
     && git clone https://github.com/joan2937/lg.git /tmp/lgpio \
     && cd /tmp/lgpio && make \
+    && cp -r /tmp/lgpio /opt/lgpio && rm -rf /tmp/lgpio \
     && cd /opt && python3 -m venv /opt/venv \
     && pip install --no-cache-dir wheel \
     && pip install --no-cache-dir poetry==1.5.1 \
@@ -57,7 +58,7 @@ RUN install_packages \
 
 COPY *.sh ./
 COPY --from=builder /opt/venv /opt/venv
-COPY --from=builder /tmp/lgpio /tmp/lgpio  # bring compiled lgpio source for native install
+COPY --from=builder /opt/lgpio /tmp/lgpio  # bring compiled lgpio source for native install
 
 ENV PATH="/opt/venv/bin:$PATH"
 ENV PYTHONPATH="/opt:$PYTHONPATH"
