@@ -45,7 +45,13 @@ RUN \
             libdbus-1-dev \
             gir1.2-gtk-3.0 \
             swig \
-            liblgpio-dev && \
+            git && \
+    git clone https://github.com/joan2937/lg.git /tmp/lgpio && \
+    cd /tmp/lgpio && \
+    make && \
+    make install && \
+    ldconfig && \
+    cd /opt && rm -rf /tmp/lgpio && \
     # Because the PATH is already updated above, this command creates a new venv AND activates it
     python3 -m venv /opt/venv && \
     # Given venv is active, this `pip` refers to the python3 variant
