@@ -113,4 +113,5 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: tjcheyne/hm-config
           short-description: ${{ github.event.repository.description }}
