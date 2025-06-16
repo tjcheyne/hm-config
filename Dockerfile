@@ -49,7 +49,7 @@ RUN \
     python3 -m venv /opt/venv && \
     # Given venv is active, this `pip` refers to the python3 variant
     #install wheel nefore lgpio
-    pip install wheel && \
+    pip install --no-cache-dir wheel && \
     pip install --no-cache-dir poetry==1.5.1 && \
     poetry install --no-cache --no-root && \
     poetry build && \
